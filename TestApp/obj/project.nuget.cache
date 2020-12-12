@@ -1,8 +1,8 @@
 {
   "version": 2,
-  "dgSpecHash": "0koxLbN4q7iwrEFojlSNtMQ3rl3hhHdQlMbHb2W3kQ8OgoE2/ATCS+MaogB4mlrBXcnUniKtrImS3QAm8hzvXA==",
+  "dgSpecHash": "k0L8TywgSRh21c3rt6lDTSsClCLkGvrjH2HhZ0hUKmKDbELY5kAhGios4Maa9T7WFh2TiPH7Ak9nsEQjG88LxA==",
   "success": true,
-  "projectFilePath": "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\TestApp\\TestApp.csproj",
+  "projectFilePath": "E:\\MyTestRunner\\TestApp\\TestApp.csproj",
   "expectedPackageFiles": [],
   "logs": []
 }

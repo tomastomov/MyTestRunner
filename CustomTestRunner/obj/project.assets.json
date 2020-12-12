@@ -15,11 +15,11 @@
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\CustomTestRunner\\CustomTestRunner.csproj",
+      "projectUniqueName": "E:\\MyTestRunner\\CustomTestRunner\\CustomTestRunner.csproj",
       "projectName": "CustomTestRunner",
-      "projectPath": "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\CustomTestRunner\\CustomTestRunner.csproj",
+      "projectPath": "E:\\MyTestRunner\\CustomTestRunner\\CustomTestRunner.csproj",
       "packagesPath": "C:\\Users\\nestl\\.nuget\\packages\\",
-      "outputPath": "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\CustomTestRunner\\obj\\",
+      "outputPath": "E:\\MyTestRunner\\CustomTestRunner\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Microsoft\\Xamarin\\NuGet\\",

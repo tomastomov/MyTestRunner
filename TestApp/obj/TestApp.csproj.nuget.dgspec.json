@@ -1,17 +1,17 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\TestApp\\TestApp.csproj": {}
+    "E:\\MyTestRunner\\TestApp\\TestApp.csproj": {}
   },
   "projects": {
-    "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\CustomTestRunner\\CustomTestRunner.csproj": {
+    "E:\\MyTestRunner\\CustomTestRunner\\CustomTestRunner.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\CustomTestRunner\\CustomTestRunner.csproj",
+        "projectUniqueName": "E:\\MyTestRunner\\CustomTestRunner\\CustomTestRunner.csproj",
         "projectName": "CustomTestRunner",
-        "projectPath": "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\CustomTestRunner\\CustomTestRunner.csproj",
+        "projectPath": "E:\\MyTestRunner\\CustomTestRunner\\CustomTestRunner.csproj",
         "packagesPath": "C:\\Users\\nestl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\CustomTestRunner\\obj\\",
+        "outputPath": "E:\\MyTestRunner\\CustomTestRunner\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -63,14 +63,14 @@
         }
       }
     },
-    "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\TestApp\\TestApp.csproj": {
+    "E:\\MyTestRunner\\TestApp\\TestApp.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\TestApp\\TestApp.csproj",
+        "projectUniqueName": "E:\\MyTestRunner\\TestApp\\TestApp.csproj",
         "projectName": "TestApp",
-        "projectPath": "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\TestApp\\TestApp.csproj",
+        "projectPath": "E:\\MyTestRunner\\TestApp\\TestApp.csproj",
         "packagesPath": "C:\\Users\\nestl\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\TestApp\\obj\\",
+        "outputPath": "E:\\MyTestRunner\\TestApp\\obj\\",
         "projectStyle": "PackageReference",
         "fallbackFolders": [
           "C:\\Microsoft\\Xamarin\\NuGet\\",
@@ -92,8 +92,8 @@
           "netcoreapp3.1": {
             "targetAlias": "netcoreapp3.1",
             "projectReferences": {
-              "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\CustomTestRunner\\CustomTestRunner.csproj": {
-                "projectPath": "C:\\Users\\nestl\\Source\\Repos\\CustomTestRunner\\CustomTestRunner\\CustomTestRunner.csproj"
+              "E:\\MyTestRunner\\CustomTestRunner\\CustomTestRunner.csproj": {
+                "projectPath": "E:\\MyTestRunner\\CustomTestRunner\\CustomTestRunner.csproj"
               }
             }
           }

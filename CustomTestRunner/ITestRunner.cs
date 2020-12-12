@@ -6,6 +6,6 @@ namespace CustomTestRunner
 {
     public interface ITestRunner
     {
-        IEnumerable<TestResult> Run();
+        IDictionary<string, IEnumerable<TestResult>> Run();
     }
 }

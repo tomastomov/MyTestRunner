@@ -18,7 +18,7 @@ namespace CustomTestRunner
 
         public override string ToString()
         {
-            return $"{ClassName}, {Method.Name}, {(Success ? "passed" : "failed")}";
+            return $"{Method?.Name}, {(Success ? "passed" : "failed")}";
         }
     }
 }

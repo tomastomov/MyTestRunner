@@ -11,27 +11,35 @@ namespace TestApp
         {
             var testRunner = new TestRunner();
 
+            Console.WriteLine("Running tests.....");
+
             var results = testRunner.Run();
 
-            foreach (var result in results)
+            foreach (var name in results.Keys)
             {
-                if (result.Success)
+                Console.WriteLine(name);
+                var tests = results[name];
+
+                foreach (var result in tests)
                 {
-                    Console.ForegroundColor = ConsoleColor.Green;
-                    Console.WriteLine(result.ToString());
-                }
-                else
-                {
-                    Console.ForegroundColor = ConsoleColor.Red;
-                    Console.WriteLine(result.Errors.Aggregate(new StringBuilder(), (sb, curr) =>
+                    if (result.Success)
                     {
-                        sb.AppendLine(curr);
+                        Console.ForegroundColor = ConsoleColor.Green;
+                        Console.WriteLine(result.ToString());
+                    }
+                    else
+                    {
+                        Console.ForegroundColor = ConsoleColor.Red;
+                        Console.WriteLine(result.Errors.Aggregate(new StringBuilder(result.ToString() + Environment.NewLine), (sb, curr) =>
+                        {
+                            sb.AppendLine(curr);
 
-                        return sb;
-                    }).ToString());
+                            return sb;
+                        }).ToString());
+                    }
+
+                    Console.ForegroundColor = ConsoleColor.DarkBlue;
                 }
-
-                Console.ForegroundColor = ConsoleColor.DarkBlue;
             }
         }
     }
@@ -48,7 +56,7 @@ namespace TestApp
     {
         public int Add(int a, int b)
         {
-            if (a < b)
+            if (a > b)
             {
                 throw new Exception("Cannot sum add a to b when a is less than b");
             }
