@@ -10,11 +10,10 @@ namespace CustomTestRunner
         public string ClassName { get; set; }
 
         public MethodInfo Method { get; set; }
-
+         
         public bool Success { get; set; }
 
         public List<string> Errors { get; set; }
-
 
         public override string ToString()
         {

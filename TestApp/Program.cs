@@ -1,7 +1,9 @@
 ﻿using CustomTestRunner;
 using System;
 using System.Linq;
+using System.Reflection;
 using System.Text;
+using System.Threading.Tasks;
 
 namespace TestApp
 {
@@ -13,7 +15,12 @@ namespace TestApp
 
             Console.WriteLine("Running tests.....");
 
-            var results = testRunner.Run();
+            var assembly = Assembly.GetExecutingAssembly();
+
+            var results = testRunner.Run(assembly, (test) =>
+            {
+                Console.WriteLine($"Test finished: {test.ToString()}");
+            }).GetAwaiter().GetResult();
 
             foreach (var name in results.Keys)
             {
@@ -50,17 +57,24 @@ namespace TestApp
         T Subtract(T a, T b);
         T Multiply(T a, T b);
         T Divide(T a, T b);
+
+        Task<T> AddAsync(T a, T b);
     }
 
     public class Calculator : ICalculator<int>
     {
         public int Add(int a, int b)
         {
-            if (a > b)
+            if (a < b)
             {
                 throw new Exception("Cannot sum add a to b when a is less than b");
             }
             else return a + b;
+        }
+
+        public Task<int> AddAsync(int a, int b)
+        {
+            return Task.Run(() => a + b);
         }
 
         public int Divide(int a, int b)
@@ -134,6 +148,18 @@ namespace TestApp
             var calculator = new Calculator();
 
             Assert.AreEqual(calculator.Multiply(3, 4), 12);
+        }
+
+        [TestMethod]
+        public async Task AddAsyncShouldReturnCorrectOutput()
+        {
+            var calculator = new Calculator();
+
+            await Task.Delay(5000).ConfigureAwait(false);
+
+            var result = await calculator.AddAsync(3, 2).ConfigureAwait(false);
+
+            Assert.AreEqual(result, 5);
         }
     }
 }
