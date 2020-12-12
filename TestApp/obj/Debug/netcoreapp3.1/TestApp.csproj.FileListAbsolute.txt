@@ -1,0 +1,16 @@
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\bin\Debug\netcoreapp3.1\TestApp.exe
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\bin\Debug\netcoreapp3.1\TestApp.deps.json
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\bin\Debug\netcoreapp3.1\TestApp.runtimeconfig.json
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\bin\Debug\netcoreapp3.1\TestApp.runtimeconfig.dev.json
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\bin\Debug\netcoreapp3.1\TestApp.dll
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\bin\Debug\netcoreapp3.1\TestApp.pdb
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\bin\Debug\netcoreapp3.1\CustomTestRunner.dll
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\bin\Debug\netcoreapp3.1\CustomTestRunner.pdb
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\obj\Debug\netcoreapp3.1\TestApp.csprojAssemblyReference.cache
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\obj\Debug\netcoreapp3.1\TestApp.AssemblyInfoInputs.cache
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\obj\Debug\netcoreapp3.1\TestApp.AssemblyInfo.cs
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\obj\Debug\netcoreapp3.1\TestApp.csproj.CoreCompileInputs.cache
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\obj\Debug\netcoreapp3.1\TestApp.csproj.CopyComplete
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\obj\Debug\netcoreapp3.1\TestApp.dll
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\obj\Debug\netcoreapp3.1\TestApp.pdb
+C:\Users\nestl\Source\Repos\CustomTestRunner\TestApp\obj\Debug\netcoreapp3.1\TestApp.genruntimeconfig.cache

@@ -1,0 +1,9 @@
+C:\Users\nestl\Source\Repos\CustomTestRunner\CustomTestRunner\bin\Debug\netcoreapp3.1\CustomTestRunner.deps.json
+C:\Users\nestl\Source\Repos\CustomTestRunner\CustomTestRunner\bin\Debug\netcoreapp3.1\CustomTestRunner.dll
+C:\Users\nestl\Source\Repos\CustomTestRunner\CustomTestRunner\bin\Debug\netcoreapp3.1\CustomTestRunner.pdb
+C:\Users\nestl\Source\Repos\CustomTestRunner\CustomTestRunner\obj\Debug\netcoreapp3.1\CustomTestRunner.csprojAssemblyReference.cache
+C:\Users\nestl\Source\Repos\CustomTestRunner\CustomTestRunner\obj\Debug\netcoreapp3.1\CustomTestRunner.AssemblyInfoInputs.cache
+C:\Users\nestl\Source\Repos\CustomTestRunner\CustomTestRunner\obj\Debug\netcoreapp3.1\CustomTestRunner.AssemblyInfo.cs
+C:\Users\nestl\Source\Repos\CustomTestRunner\CustomTestRunner\obj\Debug\netcoreapp3.1\CustomTestRunner.csproj.CoreCompileInputs.cache
+C:\Users\nestl\Source\Repos\CustomTestRunner\CustomTestRunner\obj\Debug\netcoreapp3.1\CustomTestRunner.dll
+C:\Users\nestl\Source\Repos\CustomTestRunner\CustomTestRunner\obj\Debug\netcoreapp3.1\CustomTestRunner.pdb
