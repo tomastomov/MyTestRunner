@@ -9,6 +9,14 @@ namespace TestApp.Tests
     [TestClass]
     public class CalculatorTests
     {
+        private IList<int> tempData;
+
+        [TestSetup]
+        public void Initialize()
+        {
+            tempData = new List<int>();
+        }
+
         [TestMethod]
         public void AddShouldReturnCorrectOutput()
         {
@@ -17,6 +25,8 @@ namespace TestApp.Tests
             var result = calculator.Add(13, 2);
 
             Assert.AreEqual(result, 15);
+
+            tempData.Add(result);
         }
 
         [TestMethod]
@@ -69,6 +79,12 @@ namespace TestApp.Tests
             var result = await calculator.AddAsync(3, 2).ConfigureAwait(false);
 
             Assert.AreEqual(result, 5);
+        }
+
+        [TestCleanup]
+        public void DestroyData()
+        {
+            tempData = null;
         }
     }
 }

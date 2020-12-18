@@ -9,6 +9,11 @@ namespace CustomTestRunner
 {
     public class TestRunner : ITestRunner
     {
+        private readonly IDictionary<Type, MethodInfo[]> methodsForType;
+        public TestRunner()
+        {
+            methodsForType = new Dictionary<Type, MethodInfo[]>();
+        }
         public async Task<IDictionary<string, IEnumerable<TestResult>>> Run(Assembly assembly, Action<TestResult> progressReport = null)
         {
             var classes = assembly
@@ -32,12 +37,16 @@ namespace CustomTestRunner
             var testResults = new List<TestResult>();
             var classInstance = Activator.CreateInstance(testClass);
 
+            var setupMethod = GetSetupMethod(testClass);
+
+            setupMethod?.Invoke(classInstance, new object[0]);
+
             foreach (var testMethod in testMethods)
             {
                 try
                 {
-                    var parameters = testMethod.GetParameters();
                     var result = testMethod.Invoke(classInstance, new object[0]);
+
                     if (result is Task t)
                     {
                         await t.ConfigureAwait(false);
@@ -53,10 +62,35 @@ namespace CustomTestRunner
                 progressReport?.Invoke(testResults.Last());
             }
 
+            var cleanupMethod = GetCleanupMethod(testClass);
+
+            cleanupMethod?.Invoke(classInstance, new object[0]);
+
             return testResults;
         }
 
+        private MethodInfo GetSetupMethod(Type testClassType)
+            => GetMethodByAttribute(testClassType, 
+                typeof(TestSetupAttribute), 
+                (methods, attributeType) => methods.FirstOrDefault(method => method.GetCustomAttribute(attributeType) != null));
+
+        private MethodInfo GetCleanupMethod(Type testClassType)
+            => GetMethodByAttribute(testClassType,
+                typeof(TestCleanupAttribute),
+                (methods, attributeType) => methods.FirstOrDefault(method => method.GetCustomAttribute(attributeType) != null));
         private IEnumerable<MethodInfo> GetTestMethods(Type testClassType)
-            => testClassType.GetMethods().Where(m => m.GetCustomAttribute<TestMethodAttribute>() != null);
+            => GetMethodByAttribute(testClassType,
+                typeof(TestMethodAttribute),
+                (methods, attributeType) => methods.Where(method => method.GetCustomAttribute(attributeType) != null));
+        private T GetMethodByAttribute<T>(Type testClassType, Type attributeType, Func<MethodInfo[], Type, T> filter)
+        {
+            if (!methodsForType.TryGetValue(testClassType, out var methods))
+            {
+                methods = testClassType.GetMethods();
+                methodsForType.Add(testClassType, methods);
+            }
+
+            return filter(methods, attributeType);
+        }
     }
 }

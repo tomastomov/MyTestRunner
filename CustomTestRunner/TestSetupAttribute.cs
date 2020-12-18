@@ -4,7 +4,8 @@ using System.Text;
 
 namespace CustomTestRunner
 {
-    public class TestClassAttribute : TestBaseAttribute
+    public class TestSetupAttribute : TestBaseAttribute
     {
+
     }
 }
