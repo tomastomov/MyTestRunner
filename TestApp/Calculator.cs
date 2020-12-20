@@ -9,7 +9,7 @@ namespace TestApp
     {
         public int Add(int a, int b)
         {
-            if (a < b)
+            if (a > b)
             {
                 throw new Exception("Cannot sum add a to b when a is less than b");
             }

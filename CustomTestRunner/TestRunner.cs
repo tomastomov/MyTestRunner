@@ -9,11 +9,12 @@ namespace CustomTestRunner
 {
     public class TestRunner : ITestRunner
     {
-        private readonly IDictionary<Type, MethodInfo[]> methodsForType;
-        public TestRunner()
+        private readonly ITestMethodsService methodsService_;
+        public TestRunner(ITestMethodsService methodsService = null)
         {
-            methodsForType = new Dictionary<Type, MethodInfo[]>();
+            methodsService_ = methodsService ?? new TestMethodsService();
         }
+
         public async Task<IDictionary<string, IEnumerable<TestResult>>> Run(Assembly assembly, Action<TestResult> progressReport = null)
         {
             var classes = assembly
@@ -24,7 +25,7 @@ namespace CustomTestRunner
 
             foreach (var testClass in classes)
             {
-                var testMethods = GetTestMethods(testClass);
+                var testMethods = methodsService_.GetTestMethods(testClass);
                 var className = testClass.Name;
                 testResults[className] = await RunTestMethods(testMethods, testClass, progressReport).ConfigureAwait(false);
             }
@@ -37,12 +38,14 @@ namespace CustomTestRunner
             var testResults = new List<TestResult>();
             var classInstance = Activator.CreateInstance(testClass);
 
-            var setupMethod = GetSetupMethod(testClass);
+            var setupMethod = methodsService_.GetSetupMethod(testClass);
 
             setupMethod?.Invoke(classInstance, new object[0]);
 
             foreach (var testMethod in testMethods)
             {
+                var id = methodsService_.GetMethodId(testMethod);
+
                 try
                 {
                     var result = testMethod.Invoke(classInstance, new object[0]);
@@ -52,45 +55,21 @@ namespace CustomTestRunner
                         await t.ConfigureAwait(false);
                     }
 
-                    testResults.Add(new TestResult() { ClassName = testClass.Name, Method = testMethod, Success = true });
+                    testResults.Add(new TestResult() { Id = id, ClassName = testClass.Name, Method = testMethod, Success = true });
                 }
                 catch (Exception ex)
                 {
-                    testResults.Add(new TestResult() { ClassName = testClass.Name, Method = testMethod, Errors = new List<string>() { ex.InnerException.Message } });
+                    testResults.Add(new TestResult() { Id = id, ClassName = testClass.Name, Method = testMethod, Errors = new List<string>() { ex.InnerException.Message } });
                 }
 
                 progressReport?.Invoke(testResults.Last());
             }
 
-            var cleanupMethod = GetCleanupMethod(testClass);
+            var cleanupMethod = methodsService_.GetCleanupMethod(testClass);
 
             cleanupMethod?.Invoke(classInstance, new object[0]);
 
             return testResults;
-        }
-
-        private MethodInfo GetSetupMethod(Type testClassType)
-            => GetMethodByAttribute(testClassType, 
-                typeof(TestSetupAttribute), 
-                (methods, attributeType) => methods.FirstOrDefault(method => method.GetCustomAttribute(attributeType) != null));
-
-        private MethodInfo GetCleanupMethod(Type testClassType)
-            => GetMethodByAttribute(testClassType,
-                typeof(TestCleanupAttribute),
-                (methods, attributeType) => methods.FirstOrDefault(method => method.GetCustomAttribute(attributeType) != null));
-        private IEnumerable<MethodInfo> GetTestMethods(Type testClassType)
-            => GetMethodByAttribute(testClassType,
-                typeof(TestMethodAttribute),
-                (methods, attributeType) => methods.Where(method => method.GetCustomAttribute(attributeType) != null));
-        private T GetMethodByAttribute<T>(Type testClassType, Type attributeType, Func<MethodInfo[], Type, T> filter)
-        {
-            if (!methodsForType.TryGetValue(testClassType, out var methods))
-            {
-                methods = testClassType.GetMethods();
-                methodsForType.Add(testClassType, methods);
-            }
-
-            return filter(methods, attributeType);
         }
     }
 }
