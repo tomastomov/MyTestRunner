@@ -1,9 +1,13 @@
-﻿@model IEnumerable<TestResultsViewModel>
+﻿@model FileViewModel
 @{
     ViewData["Title"] = "Home Page";
 }
 
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
-    <a asp-controller="Tests" asp-action="RunTests" class="btn btn-primary">Run tests</a>
+
+    <form asp-controller="Tests" asp-action="Explorer" enctype="multipart/form-data">
+        <input asp-for="@Model.Dll"/>
+        <input type="submit" class="btn btn-primary" value="Go to Test Explorer"/>
+    </form>
 </div>

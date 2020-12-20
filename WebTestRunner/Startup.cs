@@ -10,6 +10,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using WebTestRunner.Hubs;
+using WebTestRunner.Services;
 
 namespace WebTestRunner
 {
@@ -28,6 +29,8 @@ namespace WebTestRunner
             services.AddTransient<ITestRunner, TestRunner>();
 
             services.AddSingleton<ITestMethodsService, TestMethodsService>();
+
+            services.AddSingleton<IAssemblyService, AssemblyService>();
 
             services.AddControllersWithViews();
 

@@ -4,8 +4,19 @@ $(document).ready(() => {
     .configureLogging(signalR.LogLevel.Information)
     .build();
 
-console.log("IN");
+$('#runTestsBtn').click(() => {
+    $('.notExecuted').hide();
+    $('.passed').hide();
+    $('.failed').hide();
+    $('.spinners').show();
 
+    fetch('/runtests', {
+        method: 'GET',
+        headers: {
+            'Content-Type':'application/json'
+        }
+    })
+})
 
 async function start() {
     try{
@@ -18,10 +29,10 @@ async function start() {
 
 start().then(() => {
     connection.on("SendMessage", (id, success) => {
-        console.log(id);
-        console.log(success);
         const prefix = `#${id}-`;
+
         $(prefix + 'spinner').hide();
+
         if(success) {
             $(prefix + 'passed').show();
         }
